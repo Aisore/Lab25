@@ -9,7 +9,7 @@ typedef int Item;
 
 typedef struct _stack Stack;
 
-Stack *stack_create(size_t stack_size);
+Stack *stack_create();
 void stack_push(Stack *s, Item value);
 Item stack_pop(Stack *s);
 bool stack_is_empty(Stack *s);

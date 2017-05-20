@@ -10,12 +10,12 @@ struct _stack {
 };
 
 
-Stack *stack_create(size_t stack_size)
+Stack *stack_create()
 {
     Stack *s = (Stack *) malloc(sizeof(Stack));
     if(!s) {
         fprintf(stderr, "%s\n", "Error: no memory");
-        exit(MEMORY_LIMIT);
+        exit(0);
     }
 
     s->data = NULL;
@@ -29,7 +29,7 @@ void stack_push(Stack *s, Item value)
     s->data = (Item *) realloc(s->data, s->ptr * sizeof(Item) + sizeof(Item));
     if(!s->data) {
         fprintf(stderr, "%s\n", "Error: no memory\n");
-        exit(MEMORY_LIMIT);
+        exit(0);
     }
     s->data[s->ptr++] = value;
 }
@@ -38,7 +38,7 @@ Item stack_pop(Stack *s)
 {
     if(stack_is_empty(s)) {
         fprintf(stderr, "%s\n", "Error: stack underflow\n");
-        exit(STACK_UNDERFLOW);
+        exit(1);
     } else {
         return s->data[--s->ptr];
     }
